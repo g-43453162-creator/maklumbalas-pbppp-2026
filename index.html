@@ -19,9 +19,9 @@
                         sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        kpmBlue: '#1e3a8a', /* Biru Tua Korporat KPM */
-                        kpmDark: '#0f172a', /* Biru Paling Gelap untuk latar belakang */
-                        kpmYellow: '#eab308', /* Kuning Keemasan untuk aksen */
+                        kpmBlue: '#1e3a8a', /* Biru Tua */
+                        kpmDark: '#0f172a', /* Latar belakang Hero */
+                        kpmYellow: '#eab308', /* Kuning Keemasan */
                     }
                 }
             }
@@ -31,7 +31,7 @@
     <style>
         html { scroll-behavior: smooth; }
         
-        /* Kesan Hover & Klik pada Bintang */
+        /* Interaksi Bintang */
         .star-rating svg { 
             transition: transform 0.2s ease, color 0.2s ease; 
             cursor: pointer; 
@@ -40,13 +40,18 @@
             transform: scale(1.25); 
         }
 
-        /* Animasi Slide Up untuk Toast Notification */
+        /* Animasi Pop-up Toast */
         .toast-enter { 
             animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         @keyframes slideUp {
             from { transform: translateY(100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Kesan Kilauan Butang */
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
         }
     </style>
 </head>
@@ -65,8 +70,11 @@
             <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight leading-tight">
                 Borang Maklum Balas TOT & Taklimat PBPPP 2026
             </h1>
+            <h2 class="text-lg md:text-2xl text-kpmYellow font-medium mb-6">
+                Khusus untuk Guru Penolong Kanan Pentadbiran
+            </h2>
             <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-                Terima kasih atas penyertaan anda. Maklum balas anda amat penting bagi membantu kami meningkatkan kualiti pelaksanaan Penilaian Bersepadu Pegawai Perkhidmatan Pendidikan (PBPPP) pada masa akan datang.
+                Terima kasih atas penyertaan anda. Maklum balas anda amat penting bagi membantu kami meningkatkan kualiti pelaksanaan PBPPP pada masa akan datang.
             </p>
         </div>
     </header>
@@ -83,20 +91,20 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="nama">Nama Penuh</label>
-                            <input type="text" id="nama" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Masukkan nama anda">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Penuh</label>
+                            <input type="text" name="nama" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Masukkan nama anda">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="jawatan">Jawatan</label>
-                            <input type="text" id="jawatan" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Masukkan nama anda">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jawatan</label>
+                            <input type="text" name="jawatan" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Contoh: GPK Pentadbiran">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="sekolah">Nama Sekolah</label>
-                            <input type="text" id="sekolah" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Contoh: SMK Seri Bintang">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Sekolah</label>
+                            <input type="text" name="sekolah" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Contoh: SMK Seri Bintang">
                         </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="kodSekolah">Kod Sekolah</label>
-                            <input type="text" id="kodSekolah" class="w-full md:w-1/2 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Contoh: WEA1234">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Kod Sekolah</label>
+                            <input type="text" name="kodSekolah" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all" placeholder="Contoh: WEA1234">
                         </div>
                     </div>
                 </section>
@@ -113,32 +121,32 @@
                     <div class="space-y-4">
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">1. Sejauh mana kefahaman berkaitan taklimat PBPPP?</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q1"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">2. Adakah objektif taklimat yang disampaikan dengan jelas?</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q2"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">3. Kefahaman terhadap struktur penilaian PBPPP (Struktur, Domain dan Instrumen)</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q3"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">4. Tahap kefahaman peranan GPK dalam PBPPP</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q4"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">5. Penilaian terhadap penyampaian Pegawai PPD</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q5"></div>
                         </div>
 
                         <div class="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:border-kpmBlue hover:shadow-md transition-all group">
                             <label class="text-sm font-medium text-gray-700 md:w-2/3 mb-3 md:mb-0 group-hover:text-kpmBlue transition-colors">6. Keberkesanan bahan taklimat (Slaid, Contoh Instrumen, Template)</label>
-                            <div class="star-rating flex space-x-2 text-gray-300"></div>
+                            <div class="star-rating flex space-x-2 text-gray-300" data-q="q6"></div>
                         </div>
                     </div>
                 </section>
@@ -150,21 +158,19 @@
                     </div>
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="pandangan">Apakah pandangan anda tentang pelaksanaan PBPPP 2026?</label>
-                            <textarea id="pandangan" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all resize-none" placeholder="Kongsi pandangan anda di sini..."></textarea>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Apakah pandangan anda tentang pelaksanaan PBPPP 2026?</label>
+                            <textarea name="pandangan" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all resize-none" placeholder="Kongsi pandangan anda di sini..."></textarea>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2" for="cadangan">Cadangan penambahbaikan untuk program akan datang:</label>
-                            <textarea id="cadangan" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all resize-none" placeholder="Sila berikan cadangan anda..."></textarea>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Cadangan penambahbaikan untuk program akan datang:</label>
+                            <textarea name="cadangan" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-kpmBlue focus:border-kpmBlue transition-all resize-none" placeholder="Sila berikan cadangan anda..."></textarea>
                         </div>
                     </div>
                 </section>
 
                 <div class="pt-6 border-t border-gray-100">
                     <button id="submitBtn" type="submit" class="w-full bg-kpmBlue hover:bg-blue-900 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 group relative overflow-hidden">
-                        
                         <div class="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                        
                         <span id="btnText" class="relative z-10">Hantar Maklum Balas</span>
                         
                         <svg id="btnSpinner" class="hidden w-6 h-6 animate-spin text-white relative z-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -194,7 +200,7 @@
             </div>
             <div>
                 <h4 class="text-gray-900 font-bold">Berjaya Dihantar!</h4>
-                <p class="text-gray-600 text-sm mt-1">Terima kasih! Maklum balas anda telah direkodkan ke dalam sistem.</p>
+                <p class="text-gray-600 text-sm mt-1">Terima kasih! Maklum balas anda telah direkodkan.</p>
             </div>
         </div>
         <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none">
@@ -202,45 +208,37 @@
         </button>
     </div>
 
-    <style>
-        @keyframes shimmer {
-            100% { transform: translateX(100%); }
-        }
-    </style>
-
     <script>
-        // --- 1. Logik Penarafan Bintang Interaktif ---
+        const form = document.getElementById('feedbackForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const btnArrow = document.getElementById('btnArrow');
+        const toast = document.getElementById('toast');
+
+        // Logik Penarafan Bintang Interaktif
         const starSVG = `<svg class="w-8 h-8 md:w-9 md:h-9" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>`;
         
         document.querySelectorAll('.star-rating').forEach(container => {
-            // Pembolehubah untuk menyimpan nilai bintang yang diklik bagi setiap baris soalan
             container.selectedRating = 0; 
-            
-            // Jana 5 bintang untuk setiap bekas
             for (let i = 1; i <= 5; i++) {
                 const starWrapper = document.createElement('span');
                 starWrapper.innerHTML = starSVG;
                 starWrapper.dataset.value = i;
                 
-                // Kesan Hover
                 starWrapper.addEventListener('mouseenter', () => highlightStars(container, i));
                 starWrapper.addEventListener('mouseleave', () => highlightStars(container, container.selectedRating));
                 
-                // Kesan Klik
                 starWrapper.addEventListener('click', () => {
                     container.selectedRating = i;
                     highlightStars(container, container.selectedRating);
-                    
-                    // Tambah kesan visual bekas hijau jika sudah dijawab
-                    const parentDiv = container.closest('.flex-col');
-                    parentDiv.classList.add('border-green-200', 'bg-green-50/30');
+                    container.closest('.flex-col').classList.add('border-green-200', 'bg-green-50/30');
                 });
                 
                 container.appendChild(starWrapper);
             }
         });
 
-        // Fungsi mewarnakan bintang
         function highlightStars(container, count) {
             const stars = container.querySelectorAll('span');
             stars.forEach((star, index) => {
@@ -254,18 +252,11 @@
             });
         }
 
-        // --- 2. Logik Penghantaran Borang & Animasi (Call-To-Action) ---
-        const form = document.getElementById('feedbackForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnSpinner = document.getElementById('btnSpinner');
-        const btnArrow = document.getElementById('btnArrow');
-        const toast = document.getElementById('toast');
-
+        // Simulasi Penghantaran Borang
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Elak dari muat semula halaman (page reload)
+            e.preventDefault();
             
-            // 1. Tukar keadaan butang ke 'Loading'
+            // Keadaan 'Loading'
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-90', 'cursor-wait');
             submitBtn.classList.remove('hover:-translate-y-1', 'hover:shadow-2xl');
@@ -273,7 +264,7 @@
             btnArrow.classList.add('hidden');
             btnSpinner.classList.remove('hidden');
 
-            // 2. Simulasi penghantaran data ke pelayan (server) - 2 Saat
+            // Simulasi kelewatan 2 saat sebelum berjaya
             setTimeout(() => {
                 // Kembalikan keadaan asal butang
                 submitBtn.disabled = false;
@@ -283,34 +274,25 @@
                 btnArrow.classList.remove('hidden');
                 btnSpinner.classList.add('hidden');
                 
-                // Reset form (Borang Kosong Semula)
+                // Reset Borang & Visual Bintang
                 form.reset();
-                
-                // Reset Sistem Bintang & Warna Kotak
                 document.querySelectorAll('.star-rating').forEach(container => {
                     container.selectedRating = 0;
                     highlightStars(container, 0);
-                    const parentDiv = container.closest('.flex-col');
-                    parentDiv.classList.remove('border-green-200', 'bg-green-50/30');
+                    container.closest('.flex-col').classList.remove('border-green-200', 'bg-green-50/30');
                 });
 
-                // 3. Tunjuk Notifikasi Berjaya (Toast)
+                // Papar Toast & Skrol ke atas
                 showToast();
-                
-                // 4. Skrol perlahan ke atas 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-            }, 2000); // 2000 milisaat = 2 saat
+            }, 2000);
         });
 
-        // Fungsi Papar Toast
         function showToast() {
             toast.classList.remove('hidden');
-            // Auto sembunyi selepas 5 saat
-            setTimeout(hideToast, 5000);
+            setTimeout(hideToast, 5000); // Sembunyi selepas 5 saat
         }
 
-        // Fungsi Sembunyi Toast
         function hideToast() {
             toast.classList.add('hidden');
         }
